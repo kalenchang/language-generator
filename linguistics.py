@@ -1,16 +1,13 @@
-class Linguistics:
-
-    def __init__(self):
-        self.phonology = {}
-        self.createPhonology()
-
-    def createPhonology(self):
-        self.phonology["p"] = Consonant("p", "bilabial", "plosive", "voiceless")
-        self.phonology["t"] = Consonant("t", "alveolar", "plosive", "voiceless")
-        self.phonology["k"] = Consonant("k", "velar", "plosive", "voiceless")
-        self.phonology["b"] = Consonant("b", "bilabial", "plosive", "voiced")
-        self.phonology["d"] = Consonant("d", "alveolar", "plosive", "voiced")
-        self.phonology["g"] = Consonant("g", "velar", "plosive", "voiced")
+def createPhonology(phonology):
+    phonology['p'] = Consonant('p', 'bilabial', 'plosive', 'voiceless')
+    phonology['t'] = Consonant('t', 'alveolar', 'plosive', 'voiceless')
+    phonology['k'] = Consonant('k', 'velar', 'plosive', 'voiceless')
+    phonology['b'] = Consonant('b', 'bilabial', 'plosive', 'voiced')
+    phonology['d'] = Consonant('d', 'alveolar', 'plosive', 'voiced')
+    phonology['g'] = Consonant('g', 'velar', 'plosive', 'voiced')
+    phonology['a'] = Vowel('a', 'low', 'central', 'unrounded')
+    phonology['i'] = Vowel('i', 'high', 'front', 'unrounded')
+    phonology['u'] = Vowel('u', 'high', 'back', 'rounded')
 
 
 class Consonant:
@@ -30,8 +27,19 @@ class Consonant:
 
 class Vowel:
 
-    def __init__(self, symbol, height, backness, tenseness):
+    def __init__(self, symbol, height, backness, roundness):
         self.symbol = symbol
         self.height = height
         self.backness = backness
-        self.tenseness = tenseness
+        self.roundness = roundness
+
+        def __repr__(self):
+            return self.symbol + ': ' + self.place + ', ' + self.manner + ', ' + self.voicing
+
+        def __str__(self):
+            return self.symbol
+
+
+
+phonology = {}
+createPhonology(phonology)
